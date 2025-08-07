@@ -1,0 +1,569 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		A93701042E2C8CF200284EBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A93700EA2E2C8CF100284EBC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A93700F12E2C8CF100284EBC;
+			remoteInfo = AudioMixer;
+		};
+		A937010E2E2C8CF200284EBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A93700EA2E2C8CF100284EBC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A93700F12E2C8CF100284EBC;
+			remoteInfo = AudioMixer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A93700F22E2C8CF100284EBC /* AudioMixer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudioMixer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A93701032E2C8CF200284EBC /* AudioMixerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioMixerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A937010D2E2C8CF200284EBC /* AudioMixerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioMixerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A9E5C9032E427AA5009774C1 /* Exceptions for "AudioMixer" folder in "AudioMixer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A93700F12E2C8CF100284EBC /* AudioMixer */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A93700F42E2C8CF100284EBC /* AudioMixer */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A9E5C9032E427AA5009774C1 /* Exceptions for "AudioMixer" folder in "AudioMixer" target */,
+			);
+			path = AudioMixer;
+			sourceTree = "<group>";
+		};
+		A93701062E2C8CF200284EBC /* AudioMixerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AudioMixerTests;
+			sourceTree = "<group>";
+		};
+		A93701102E2C8CF200284EBC /* AudioMixerUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AudioMixerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A93700EF2E2C8CF100284EBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A93701002E2C8CF200284EBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A937010A2E2C8CF200284EBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A93700E92E2C8CF100284EBC = {
+			isa = PBXGroup;
+			children = (
+				A93700F42E2C8CF100284EBC /* AudioMixer */,
+				A93701062E2C8CF200284EBC /* AudioMixerTests */,
+				A93701102E2C8CF200284EBC /* AudioMixerUITests */,
+				A93700F32E2C8CF100284EBC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A93700F32E2C8CF100284EBC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A93700F22E2C8CF100284EBC /* AudioMixer.app */,
+				A93701032E2C8CF200284EBC /* AudioMixerTests.xctest */,
+				A937010D2E2C8CF200284EBC /* AudioMixerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A93700F12E2C8CF100284EBC /* AudioMixer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A93701172E2C8CF200284EBC /* Build configuration list for PBXNativeTarget "AudioMixer" */;
+			buildPhases = (
+				A93700EE2E2C8CF100284EBC /* Sources */,
+				A93700EF2E2C8CF100284EBC /* Frameworks */,
+				A93700F02E2C8CF100284EBC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A93700F42E2C8CF100284EBC /* AudioMixer */,
+			);
+			name = AudioMixer;
+			packageProductDependencies = (
+			);
+			productName = AudioMixer;
+			productReference = A93700F22E2C8CF100284EBC /* AudioMixer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A93701022E2C8CF200284EBC /* AudioMixerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A937011A2E2C8CF200284EBC /* Build configuration list for PBXNativeTarget "AudioMixerTests" */;
+			buildPhases = (
+				A93700FF2E2C8CF200284EBC /* Sources */,
+				A93701002E2C8CF200284EBC /* Frameworks */,
+				A93701012E2C8CF200284EBC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A93701052E2C8CF200284EBC /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A93701062E2C8CF200284EBC /* AudioMixerTests */,
+			);
+			name = AudioMixerTests;
+			packageProductDependencies = (
+			);
+			productName = AudioMixerTests;
+			productReference = A93701032E2C8CF200284EBC /* AudioMixerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A937010C2E2C8CF200284EBC /* AudioMixerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A937011D2E2C8CF200284EBC /* Build configuration list for PBXNativeTarget "AudioMixerUITests" */;
+			buildPhases = (
+				A93701092E2C8CF200284EBC /* Sources */,
+				A937010A2E2C8CF200284EBC /* Frameworks */,
+				A937010B2E2C8CF200284EBC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A937010F2E2C8CF200284EBC /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A93701102E2C8CF200284EBC /* AudioMixerUITests */,
+			);
+			name = AudioMixerUITests;
+			packageProductDependencies = (
+			);
+			productName = AudioMixerUITests;
+			productReference = A937010D2E2C8CF200284EBC /* AudioMixerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A93700EA2E2C8CF100284EBC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					A93700F12E2C8CF100284EBC = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					A93701022E2C8CF200284EBC = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = A93700F12E2C8CF100284EBC;
+					};
+					A937010C2E2C8CF200284EBC = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = A93700F12E2C8CF100284EBC;
+					};
+				};
+			};
+			buildConfigurationList = A93700ED2E2C8CF100284EBC /* Build configuration list for PBXProject "AudioMixer" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A93700E92E2C8CF100284EBC;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A93700F32E2C8CF100284EBC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A93700F12E2C8CF100284EBC /* AudioMixer */,
+				A93701022E2C8CF200284EBC /* AudioMixerTests */,
+				A937010C2E2C8CF200284EBC /* AudioMixerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A93700F02E2C8CF100284EBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A93701012E2C8CF200284EBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A937010B2E2C8CF200284EBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A93700EE2E2C8CF100284EBC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A93700FF2E2C8CF200284EBC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A93701092E2C8CF200284EBC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A93701052E2C8CF200284EBC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A93700F12E2C8CF100284EBC /* AudioMixer */;
+			targetProxy = A93701042E2C8CF200284EBC /* PBXContainerItemProxy */;
+		};
+		A937010F2E2C8CF200284EBC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A93700F12E2C8CF100284EBC /* AudioMixer */;
+			targetProxy = A937010E2E2C8CF200284EBC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A93701152E2C8CF200284EBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A93701162E2C8CF200284EBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		A93701182E2C8CF200284EBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AudioMixer/AudioMixer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AudioMixer/Preview Content\"";
+				DEVELOPMENT_TEAM = FM6K8ACTUR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AudioMixer/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = micser.AudioMixer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A93701192E2C8CF200284EBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = AudioMixer/AudioMixer.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"AudioMixer/Preview Content\"";
+				DEVELOPMENT_TEAM = FM6K8ACTUR;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AudioMixer/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = micser.AudioMixer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A937011B2E2C8CF200284EBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FM6K8ACTUR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = micser.AudioMixerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudioMixer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AudioMixer";
+			};
+			name = Debug;
+		};
+		A937011C2E2C8CF200284EBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FM6K8ACTUR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = micser.AudioMixerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AudioMixer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AudioMixer";
+			};
+			name = Release;
+		};
+		A937011E2E2C8CF200284EBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FM6K8ACTUR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = micser.AudioMixerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = AudioMixer;
+			};
+			name = Debug;
+		};
+		A937011F2E2C8CF200284EBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FM6K8ACTUR;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = micser.AudioMixerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = AudioMixer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A93700ED2E2C8CF100284EBC /* Build configuration list for PBXProject "AudioMixer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A93701152E2C8CF200284EBC /* Debug */,
+				A93701162E2C8CF200284EBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A93701172E2C8CF200284EBC /* Build configuration list for PBXNativeTarget "AudioMixer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A93701182E2C8CF200284EBC /* Debug */,
+				A93701192E2C8CF200284EBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A937011A2E2C8CF200284EBC /* Build configuration list for PBXNativeTarget "AudioMixerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A937011B2E2C8CF200284EBC /* Debug */,
+				A937011C2E2C8CF200284EBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A937011D2E2C8CF200284EBC /* Build configuration list for PBXNativeTarget "AudioMixerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A937011E2E2C8CF200284EBC /* Debug */,
+				A937011F2E2C8CF200284EBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A93700EA2E2C8CF100284EBC /* Project object */;
+}
