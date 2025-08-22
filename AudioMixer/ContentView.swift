@@ -34,7 +34,7 @@ struct ItemRow: View {
             }
         }
         .onAppear {
-            spotifyController.startPlaybackMonitor(every: 1) // faster updates
+            spotifyController.startPlaybackMonitor(every: 1)
         }
         .onDisappear {
             spotifyController.stopPlaybackMonitor()
@@ -80,51 +80,122 @@ struct ItemRow: View {
                     }
                 }
                 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(track?.name ?? "No track playing")
-                        .font(.headline)
-                        .lineLimit(2)
-                    Text(track?.artists.first?.name ?? "")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                VStack(alignment: .leading, spacing: 2) {
+                    // Title marquee
+                    MarqueeText(
+                        text: track?.name ?? "No track playing",
+                        font: .system(size: 20, weight: .semibold),
+                        speed: 50,
+                        delay: 0.8
+                    )
+                    // Artist marquee (smaller)
+                    MarqueeText(
+                        text: track?.artists.first?.name ?? "",
+                        font: .system(size: 16),
+                        speed: 50,
+                        delay: 0.8
+                    )
+                    .foregroundColor(.secondary)
                 }
                 Spacer()
             }
-            
-            if duration > 0 {
-                VStack(spacing: 6) {
-                    ProgressView(value: Double(progress), total: Double(duration))
-                        .progressViewStyle(.linear)
-                    HStack {
-                        Text(formatMs(progress))
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        Spacer()
-                        Text(formatMs(duration))
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
-                }
-            }
-            
-            HStack {
-                Button(isPlaying ? "Pause" : "Play") {
-                    spotifyController.togglePlayPause { ok in
-                        if ok {
-                            // quick sync
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                                spotifyController.getSongStatus()
-                            }
+
+            VStack(spacing: 8) {
+                if duration > 0 {
+                    VStack(spacing: 6) {
+                        HStack(spacing: 8) {
+                            Text(formatMs(progress))
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .monospacedDigit()
+                                .frame(width: 36, alignment: .leading)
+
+                            ScrubbableProgressBar(
+                                progressMs: progress,
+                                durationMs: duration,
+                                trackColor: Color.black.opacity(0.35),
+                                fillColor: .white,
+                                height: 6,
+                                onScrub: { newMs in
+                                    spotifyController.currentProgressMs = newMs
+                                },
+                                onScrubEnd: { newMs in
+                                    spotifyController.skipToTimestamp(positionMs: newMs)
+                                }
+                            )
+
+                            Text(formatMs(duration))
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                                .monospacedDigit()
+                                .frame(width: 36, alignment: .trailing)
                         }
                     }
                 }
-                .buttonStyle(.borderedProminent)
-                .disabled(!spotifyController.isTokenValid)
-                
-                Spacer()
+
+                HStack(spacing: 16) {
+                    Spacer()
+
+                    Button {
+                        spotifyController.skipBack { ok in
+                        if ok {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                spotifyController.getSongStatus()
+                            }
+                        }}
+                        print("Skip back tapped")
+                    } label: {
+                        Image(systemName: "backward.end.fill")
+                            .font(.title2)
+                            .foregroundStyle(.primary)
+                            .frame(width: 36, height: 36)
+                            .contentShape(Circle())
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(!spotifyController.isTokenValid)
+
+                    Button {
+                        spotifyController.togglePlayPause { ok in
+                            if ok {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                    spotifyController.getSongStatus()
+                                }
+                            }
+                        }
+                    } label: {
+                        Image(systemName: isPlaying ? "pause.fill" : "play.fill")
+                            .font(.title2)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.circle)
+                    .controlSize(.large)
+                    .disabled(!spotifyController.isTokenValid)
+
+                    // Skip Forward
+                    Button {
+                        spotifyController.skipSong { ok in
+                        if ok {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                spotifyController.getSongStatus()
+                            }
+                        }}
+                        print("Skip forward tapped")
+                    } label: {
+                        Image(systemName: "forward.end.fill")
+                            .font(.title2)
+                            .foregroundStyle(.primary)
+                            .frame(width: 36, height: 36)
+                            .contentShape(Circle())
+                    }
+                    .buttonStyle(.plain)
+                    .disabled(!spotifyController.isTokenValid)
+
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity)
             }
         }
-        .frame(width: 280)
+        .frame(width: 350)
         .padding()
     }
 }

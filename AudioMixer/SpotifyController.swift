@@ -288,7 +288,7 @@ class SpotifyController: ObservableObject{
             print("Token expired, attempting to refresh...")
             refreshAccessToken()
             completion?(false)
-            return // ensure we don't continue when token invalid
+            return
         }
 
         func performToggle(isPlaying: Bool){
@@ -304,7 +304,7 @@ class SpotifyController: ObservableObject{
             request.httpMethod = "PUT"
             request.setValue("Bearer \(UserDefaults.standard.string(forKey: "spotify_access_token") ?? "")",
                              forHTTPHeaderField: "Authorization")
-            request.httpBody = Data() // fine for both endpoints
+            request.httpBody = Data()
 
             URLSession.shared.dataTask(with: request) { _, response, error in
                 if let error = error {
@@ -375,5 +375,180 @@ class SpotifyController: ObservableObject{
     func stopPlaybackMonitor() {
         statusTimer?.invalidate()
         statusTimer = nil
+    }
+
+    func skipSong(completion: ((Bool) -> Void)? = nil) {
+        if !isTokenValid {
+            print("Token expired, attempting to refresh...")
+            refreshAccessToken()
+            completion?(false)
+            return
+        }
+
+        var comps = URLComponents(string: "https://api.spotify.com/v1/me/player/next")!
+
+        guard let url = comps.url else { completion?(false); return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(UserDefaults.standard.string(forKey: "spotify_access_token") ?? "")",
+                         forHTTPHeaderField: "Authorization")
+        request.httpBody = Data()
+
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                print("Skip error:", error)
+                completion?(false)
+                return
+            }
+
+            guard let http = response as? HTTPURLResponse else {
+                completion?(false)
+                return
+            }
+
+            if (200...299).contains(http.statusCode) {
+                // Success — fetch fresh status so title/artwork update quickly
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.getSongStatus()
+                }
+                completion?(true)
+                return
+            }
+
+            if http.statusCode == 401 {
+                print("Unauthorized; refreshing token…")
+                DispatchQueue.main.async { self.refreshAccessToken() }
+            } else if http.statusCode == 404 {
+                print("No active device")
+            } else if http.statusCode == 403 {
+                print("Action forbidden (likely requires Premium)")
+            } else {
+                print("Unexpected status:", http.statusCode)
+            }
+            completion?(false)
+        }.resume()
+    }
+
+    func skipBack(completion: ((Bool) -> Void)? = nil) {
+        if !isTokenValid {
+            print("Token expired, attempting to refresh...")
+            refreshAccessToken()
+            completion?(false)
+            return
+        }
+
+        if currentProgressMs! > 2000 {
+            skipToTimestamp(positionMs: 0)
+            completion?(true)
+            return
+        }
+
+        var comps = URLComponents(string: "https://api.spotify.com/v1/me/player/previous")!
+
+        guard let url = comps.url else { completion?(false); return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(UserDefaults.standard.string(forKey: "spotify_access_token") ?? "")",
+                         forHTTPHeaderField: "Authorization")
+        request.httpBody = Data()
+
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                print("Skip error:", error)
+                completion?(false)
+                return
+            }
+
+            guard let http = response as? HTTPURLResponse else {
+                completion?(false)
+                return
+            }
+
+            if (200...299).contains(http.statusCode) {
+                // Success — fetch fresh status so title/artwork update quickly
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.getSongStatus()
+                }
+                completion?(true)
+                return
+            }
+
+            if http.statusCode == 401 {
+                print("Unauthorized; refreshing token…")
+                DispatchQueue.main.async { self.refreshAccessToken() }
+            } else if http.statusCode == 404 {
+                print("No active device")
+            } else if http.statusCode == 403 {
+                print("Action forbidden (likely requires Premium)")
+            } else {
+                print("Unexpected status:", http.statusCode)
+            }
+            completion?(false)
+        }.resume()
+    }
+
+    func skipToTimestamp(positionMs: Int, completion: ((Bool) -> Void)? = nil) {
+        // Validate token first
+        if !isTokenValid {
+            print("Token expired, attempting to refresh…")
+            refreshAccessToken()
+            completion?(false)
+            return
+        }
+
+        // Clamp to [0, trackDuration]
+        let clamped: Int = {
+            if let duration = nowPlaying?.durationMs {
+                return max(0, min(positionMs, duration))
+            } else {
+                return max(0, positionMs)
+            }
+        }()
+
+        var comps = URLComponents(string: "https://api.spotify.com/v1/me/player/seek")!
+        comps.queryItems = [URLQueryItem(name: "position_ms", value: String(clamped))]
+
+        guard let url = comps.url else { completion?(false); return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "PUT"
+        request.setValue("Bearer \(UserDefaults.standard.string(forKey: "spotify_access_token") ?? "")",
+                         forHTTPHeaderField: "Authorization")
+        request.httpBody = Data()
+
+        URLSession.shared.dataTask(with: request) { _, response, error in
+            if let error = error {
+                print("Seek error:", error)
+                completion?(false)
+                return
+            }
+            guard let http = response as? HTTPURLResponse else {
+                completion?(false)
+                return
+            }
+
+            if (200...299).contains(http.statusCode) {
+                // Optimistic local update
+                DispatchQueue.main.async {
+                    self.currentProgressMs = clamped
+                }
+                completion?(true)
+            } else if http.statusCode == 401 {
+                print("Unauthorized; refreshing token…")
+                DispatchQueue.main.async { self.refreshAccessToken() }
+                completion?(false)
+            } else if http.statusCode == 404 {
+                print("No active device")
+                completion?(false)
+            } else if http.statusCode == 403 {
+                print("Forbidden (likely requires Premium)")
+                completion?(false)
+            } else {
+                print("Seek unexpected status:", http.statusCode)
+                completion?(false)
+            }
+        }.resume()
     }
 }
