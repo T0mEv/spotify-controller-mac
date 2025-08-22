@@ -7,49 +7,129 @@
 
 import SwiftUI
 
+private func formatMs(_ ms: Int) -> String {
+    let secs = ms / 1000
+    return String(format: "%d:%02d", secs / 60, secs % 60)
+}
+
 struct ItemRow: View {
-    
-    @State private var isEditing = false
-    @State private var currentKey = ""
-    
-    private var spotifyController = SpotifyController()
+    @EnvironmentObject var spotifyController: SpotifyController
     
     var body: some View {
-        VStack(alignment: .leading){
-            HStack {
-                Image(systemName: "gearshape")
-                    .font(.system(size: 25))
-                Text("Settings")
-                    .frame(minWidth: 0, minHeight: 0)
-                    .font(.system(size: 25))
-                Spacer()
+        Group {
+            if !(spotifyController.accessToken != nil && spotifyController.isTokenValid) {
+                VStack(spacing: 12) {
+                    Image(systemName: "music.note")
+                        .font(.system(size: 24))
+                        .foregroundColor(.secondary)
+                    Button("Connect to Spotify") {
+                        spotifyController.authorize()
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                .frame(width: 280, alignment: .center)
+                .padding()
+            } else {
+                contentView
             }
-            .padding(EdgeInsets(top: 10, leading: 4, bottom: 0, trailing: 0))
-            Button(action: {
-                spotifyController.authorize()
-            })  {
-                Text("Connect to Spotify")
-            }
-            .onOpenURL { incomingURL in
-                print("App was opened by URL: \(incomingURL)")
-                
-                // This code extracts the authorization code from the URL
-                guard let components = URLComponents(url: incomingURL, resolvingAgainstBaseURL: true),
-                      let code = components.queryItems?.first(where: { $0.name == "code" })?.value else {
-                    print("Error: Could not find authorization code in URL.")
-                    return
+        }
+        .onAppear {
+            spotifyController.startPlaybackMonitor(every: 1) // faster updates
+        }
+        .onDisappear {
+            spotifyController.stopPlaybackMonitor()
+        }
+    }
+    
+    @ViewBuilder
+    private var contentView: some View {
+        let track = spotifyController.nowPlaying
+        let isPlaying = spotifyController.isPlayingNow
+        let progress = spotifyController.currentProgressMs ?? 0
+        let duration = track?.durationMs ?? 0
+        let artworkURL = track?.album.images.first?.url
+        
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .top, spacing: 12) {
+                AsyncImage(url: URL(string: artworkURL ?? "")) { phase in
+                    switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(1, contentMode: .fill)
+                            .frame(width: 64, height: 64)
+                            .cornerRadius(6)
+                    case .empty:
+                        ZStack {
+                            Rectangle().fill(Color.secondary.opacity(0.15))
+                            Image(systemName: "music.note")
+                                .foregroundColor(.secondary)
+                        }
+                        .frame(width: 64, height: 64)
+                        .cornerRadius(6)
+                    case .failure:
+                        ZStack {
+                            Rectangle().fill(Color.secondary.opacity(0.15))
+                            Image(systemName: "exclamationmark.triangle")
+                                .foregroundColor(.secondary)
+                        }
+                        .frame(width: 64, height: 64)
+                        .cornerRadius(6)
+                    @unknown default:
+                        EmptyView()
+                    }
                 }
                 
-                print("SUCCESS! Authorization Code: \(code)")
-                
-                // The next step will be to use this code.
-                // For example: spotifyController.exchangeCodeForToken(code: code)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(track?.name ?? "No track playing")
+                        .font(.headline)
+                        .lineLimit(2)
+                    Text(track?.artists.first?.name ?? "")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
             }
-            .padding()
+            
+            if duration > 0 {
+                VStack(spacing: 6) {
+                    ProgressView(value: Double(progress), total: Double(duration))
+                        .progressViewStyle(.linear)
+                    HStack {
+                        Text(formatMs(progress))
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        Spacer()
+                        Text(formatMs(duration))
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+            
+            HStack {
+                Button(isPlaying ? "Pause" : "Play") {
+                    spotifyController.togglePlayPause { ok in
+                        if ok {
+                            // quick sync
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                                spotifyController.getSongStatus()
+                            }
+                        }
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .disabled(!spotifyController.isTokenValid)
+                
+                Spacer()
+            }
         }
+        .frame(width: 280)
+        .padding()
     }
 }
 
 #Preview {
     ItemRow()
+        .environmentObject(SpotifyController())
 }
